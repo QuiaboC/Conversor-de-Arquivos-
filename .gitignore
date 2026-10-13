@@ -1,0 +1,25 @@
+
+# Dependências Node.js
+node_modules/
+**/node_modules/
+
+# Variáveis de ambiente
+.env
+.env.*
+!.env_template
+!.env.example
+
+# Backup do banco
+backup-*.sql
+
+# Arquivos de mídia de teste
+*.mp4
+imagem-teste.png
+imagem-convertida.jpg
+imagem-convertida.webp
+video-convertido.mp4
+download
+
+# Logs
+*.log
+npm-debug.log*

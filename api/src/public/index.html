@@ -1,0 +1,188 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101322">
+  <title>MediaConvert | Conversor de mídia</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/script.js" defer></script>
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="container nav">
+      <a class="brand" href="/">
+        <span class="brand-icon">⟳</span>
+        <span>MediaConvert</span>
+      </a>
+
+      <div class="api-status">
+        <span class="status-dot"></span>
+        <span>Conversor de mídia</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <span class="eyebrow">Simples · Rápido · Prático</span>
+
+      <h1>
+        Seus arquivos,<br>
+        <span class="gradient-text">outro formato.</span>
+      </h1>
+
+      <p>
+        Converta vídeos, áudios e imagens em poucos passos.
+        Envie seu arquivo, escolha o formato e baixe o resultado.
+      </p>
+    </section>
+
+    <section class="converter-card">
+      <form id="conversion-form">
+        <h2 class="section-title">01. Escolha seu arquivo</h2>
+
+        <div class="dropzone" id="dropzone">
+          <div class="upload-icon">↑</div>
+
+          <h3>Arraste seu arquivo para cá</h3>
+          <p>ou selecione um arquivo do computador</p>
+
+          <button type="button" class="secondary-button" id="browse-button">
+            Selecionar arquivo
+          </button>
+
+          <span class="file-limit">Tamanho máximo: 500 MB</span>
+
+          <input
+            type="file"
+            id="file-input"
+            class="hidden-input"
+            accept="video/*,audio/*,image/*"
+          >
+
+          <div class="file-preview" id="file-preview" hidden>
+            <span class="file-icon" id="file-icon">📄</span>
+
+            <div class="file-info">
+              <strong id="file-name"></strong>
+              <span id="file-size"></span>
+            </div>
+
+            <button
+              type="button"
+              class="remove-button"
+              id="remove-file"
+              aria-label="Remover arquivo"
+            >
+              Remover
+            </button>
+          </div>
+        </div>
+
+        <div class="form-grid">
+          <div class="field">
+            <label for="output-format">02. Formato de saída</label>
+
+            <select id="output-format" name="output_format" required disabled>
+              <option value="">Selecione um arquivo primeiro</option>
+            </select>
+
+            <p class="field-help" id="format-help">
+              Os formatos disponíveis dependem do arquivo selecionado.
+            </p>
+          </div>
+
+          <div class="field">
+            <label for="email">03. E-mail para notificação</label>
+
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="voce@exemplo.com"
+              maxlength="255"
+              autocomplete="email"
+              required
+            >
+
+            <p class="field-help">
+              Você receberá uma notificação sobre a conversão.
+            </p>
+          </div>
+        </div>
+
+        <button
+          type="submit"
+          class="primary-button"
+          id="convert-button"
+        >
+          <span class="button-icon">⟳</span>
+          <span id="button-text">Converter arquivo</span>
+        </button>
+
+        <div id="notice" class="notice" role="status" aria-live="polite" hidden></div>
+      </form>
+
+      <section class="result-card" id="result" aria-live="polite" hidden>
+        <div class="result-heading">
+          <span class="result-icon" id="result-icon">⟳</span>
+
+          <div>
+            <h2 id="result-title">Preparando conversão</h2>
+            <p id="result-description">Aguardando o processamento.</p>
+          </div>
+        </div>
+
+        <div class="progress-track">
+          <div class="progress-bar" id="progress-bar"></div>
+        </div>
+
+        <div class="progress-label">
+          <span id="progress-status">Aguardando</span>
+          <span id="progress-percent">0%</span>
+        </div>
+
+        <a
+          class="download-button"
+          id="download-button"
+          href="#"
+          hidden
+        >
+          ↓ Baixar arquivo convertido
+        </a>
+
+        <p class="job-id" id="job-id"></p>
+      </section>
+    </section>
+
+    <section class="features">
+      <article class="feature">
+        <span class="feature-icon">🎬</span>
+        <h3>Vídeos e áudio</h3>
+        <p>MP4, WebM e MP3</p>
+      </article>
+
+      <article class="feature">
+        <span class="feature-icon">🖼️</span>
+        <h3>Imagens</h3>
+        <p>JPG, PNG e WebP</p>
+      </article>
+
+      <article class="feature">
+        <span class="feature-icon">⬇️</span>
+        <h3>Download</h3>
+        <p>Baixe o arquivo convertido</p>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      MediaConvert · Projeto de conversão de mídia
+    </div>
+  </footer>
+</body>
+</html>
