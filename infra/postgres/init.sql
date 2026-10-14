@@ -1,4 +1,3 @@
-
 CREATE TABLE IF NOT EXISTS jobs (
     id UUID PRIMARY KEY,
     original_filename VARCHAR(255) NOT NULL,
@@ -7,6 +6,7 @@ CREATE TABLE IF NOT EXISTS jobs (
     input_key TEXT,
     output_key TEXT,
     error_message TEXT,
+    email VARCHAR(255),
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );

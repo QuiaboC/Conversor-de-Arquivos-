@@ -2,7 +2,6 @@ version: "3.8"
 
 services:
 
-  # API Node.js  
   api:
     build:
       context: .
@@ -30,7 +29,6 @@ services:
         condition: service_started
     restart: unless-stopped
 
-  # Broker de Mensagens (RabbitMQ)
   rabbitmq:
     image: rabbitmq:4-management
     container_name: conversor-rabbitmq
@@ -38,15 +36,14 @@ services:
       RABBITMQ_DEFAULT_USER: conversor
       RABBITMQ_DEFAULT_PASS: conversor123
     ports:
-      - "5672:5672" # AMQP
-      - "15672:15672" # Painel web (http://localhost:15672)
+      - "5672:5672" 
+      - "15672:15672" 
     healthcheck:
       test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
       interval: 5s
       timeout: 5s
       retries: 5
 
-  # Object Storage (Silo - Fork do MinIO)
   minio:
     image: pgsty/silo:latest
     container_name: conversor-silo
@@ -55,8 +52,8 @@ services:
       MINIO_ROOT_USER: minioadmin
       MINIO_ROOT_PASSWORD: minioadmin123
     ports:
-      - "9000:9000" # API S3 / Downloads
-      - "9001:9001" # Console web (http://localhost:9001)
+      - "9000:9000" 
+      - "9001:9001" 
     volumes:
       - silo_data:/data
       
@@ -87,7 +84,6 @@ services:
         condition: service_healthy
     restart: unless-stopped
 
-  # Banco de Dados para estado dos Jobs
   postgres:
     image: postgres:16-alpine
     container_name: conversor-postgres
@@ -106,15 +102,12 @@ services:
       timeout: 5s
       retries: 5
 
-  # Servidor SMTP para e-mails de teste
   mailpit:
     image: axllent/mailpit:latest
     container_name: conversor-mailpit
     ports:
-      - "1025:1025" # SMTP
-      - "8025:8025" # Webmail (http://localhost:8025)
-
-
+      - "1025:1025" 
+      - "8025:8025" 
 
 volumes:
   postgres_data:

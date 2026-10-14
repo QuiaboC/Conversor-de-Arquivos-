@@ -440,6 +440,10 @@ async function main() {
     durable: true
     });
 
+    await channel.assertQueue(QUEUE_NAME, {
+    durable: true
+    });
+
     await channel.prefetch(1);
 
     console.log(
